@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinArg: Pensa en tus finanzas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <h1 class="nav-brand">FinArg: Pensa en tus finanzas</h1>
+    </nav>
+    
+    <main class="container">
+        <div>
+            <label class="label" for="component-name">Ingresa el monto:</label>
+            <input type="text" class="input" placeholder="$0.00 (ARS)" id="valorARS" autocomplete="off">
+        </div>
+    
+        <table class="table" border="1">
+            <thead>
+                <tr>
+                    <th width="200px">Tipo de Cambio</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td>Dolar Oficial<sup>1</sup></td>
+                        <td id="answer1"></td>
+                    </tr>
+                    <tr>
+                        <td>Dolar Tarjeta</td>
+                        <td id="answer2"></td>
+                    </tr>
+                    <tr>
+                        <td>Dolar Tarjeta (si gastaste >$300USD)</td>
+                        <td id="answer3"></td>
+                    </tr>
+                    <tr>
+                        <td>Dolar Ahorro</td>
+                        <td id="answer4"></td>
+                    </tr>
+                    <tr>
+                        <td>Dolar Blue<sup>2</sup></td>
+                        <td id="answer5"></td>
+                    </tr>
+                </tbody>
+        </table>
+        <section class="captions">
+            <p>1. 1U$D = $153,83ARS (21/10/22). </p>
+            <p>2. 1U$D = $291,00ARS (21/10/22). </p>
+        </section>
+        
+    </main>
+    <script src="curso.js"></script>
+</body>
+</html>
