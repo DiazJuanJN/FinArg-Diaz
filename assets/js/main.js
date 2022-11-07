@@ -1,52 +1,55 @@
 //CONVERSOR DE DIVISA
 
-let valor = prompt("Ingrese el monto sobre el que desea operar:");
-let operacion = prompt("Ingrese la operacion que desea realizar:\n1. Convertir a Dolar Oficial\n2. Convertir a Dolar Tarjeta\n3. Convertir a Dolar Tarjeta (si tuviste gastos de >300U$D)\n4. Convertir a Dolar Oficial con valor del 01/01/2022\n5. Convertir a Dolar Blue.")
-
-function dolarOficial() {
-    return parseFloat(valor) / 153.83;
+function dolarOficial(valorARS) {
+    return parseFloat(valorARS) / 153.83;
 }
-
-function dolarTarjeta() {
-    return parseFloat(valor) / (153.83 * 1.30 * 1.45);
+function dolarTarjeta(valorARS) {
+    return parseFloat(valorARS) / (153.83 * 1.30 * 1.45);
 }
-
-function dolarTarjetaPlus300() {
-    return parseFloat(valor) / (153.83 * 1.35 * 1.45 * 1.25);
+function dolarTarjetaPlus300(valorARS) {
+    return parseFloat(valorARS) / (153.83 * 1.35 * 1.45 * 1.25);
 }
-
-function dolarAhorro() {
-    return parseFloat(valor) / (153.83 * 1.30 * 1.35);
+function dolarAhorro(valorARS) {
+    return parseFloat(valorARS) / (153.83 * 1.30 * 1.35);
 }
-
-function dolarBlue() {
-    return parseFloat(valor) / 291;
-}
-
-if (operacion == 1) {
-    alert(dolarOficial(valor).toFixed(2));
-} else if (operacion == 2) {
-    alert(dolarTarjeta(valor).toFixed(2));
-} else if (operacion == 3) {
-    alert (dolarTarjetaPlus300(valor).toFixed(2));
-} else if (operacion == 4) {
-    alert (dolarAhorro(valor).toFixed(2));
-} else if (operacion == 5) {
-    alert (dolarBlue(valor).toFixed(2));
+function dolarBlue(valorARS) {
+    return parseFloat(valorARS) / 291;
 }
 
 const answer1 = document.querySelector("#answer1");
-answer1.textContent = dolarOficial(valor).toFixed(2);
 const answer2 = document.querySelector("#answer2");
-answer2.textContent = dolarTarjeta(valor).toFixed(2);
 const answer3 = document.querySelector("#answer3");
-answer3.textContent = dolarTarjetaPlus300(valor).toFixed(2);
 const answer4 = document.querySelector("#answer4");
-answer4.textContent = dolarAhorro(valor).toFixed(2);
 const answer5 = document.querySelector("#answer5");
-answer5.textContent = dolarBlue(valor).toFixed(2);
+
+const valorARS = document.querySelector("#valorARS");
+
+valorARS.addEventListener("keyup", () => {
+    const valor = valorARS.value;
+
+    if (valor) {
+        answer1.textContent = dolarOficial(valor).toFixed(2);
+        answer2.textContent = dolarTarjeta(valor).toFixed(2);
+        answer3.textContent = dolarTarjetaPlus300(valor).toFixed(2);
+        answer4.textContent = dolarAhorro(valor).toFixed(2);
+        answer5.textContent = dolarBlue(valor).toFixed(2);
+    } else {
+        answer1.textContent = "";
+        answer2.textContent = "";
+        answer3.textContent = "";
+        answer4.textContent = "";
+        answer5.textContent = "";
+    }
+    
+})
 
 //PORTALES DE COMPRA
+
+const data = [
+    ["Uala", "assets/img/uala-logo.png", "$200 (+65%)"],
+    ["Brubank", "assets/img/brubank-logo.png", "$180 (+50%)"], 
+    ["Banco Nacion", "assets/img/bna-logo.png", "$250 (+45%)"]
+];
 
 function renderTableRows(rows) {
     let htmlTable = `<tr>
@@ -63,15 +66,8 @@ function renderTableRows(rows) {
         </tr>`
         htmlTotal = htmlTotal + htmlTable;
     })
-    console.log(rows);
     return htmlTotal;
 }
-
-const data = [
-    ["Uala", "assets/img/uala-logo.png", "$200(+65%)"],
-    ["Brubank", "assets/img/brubank-logo.png", "$180(+50%)"], 
-    ["Banco Nacion", "assets/img/bna-logo.png", "$250(+45%)"]
-];
 
 const html = renderTableRows(data);
 
