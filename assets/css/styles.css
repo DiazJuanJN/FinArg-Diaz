@@ -209,6 +209,8 @@ input:not(.btn):focus {
     height: auto;
 }
 
+/*TABLAS*/
+
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -256,3 +258,7 @@ sup {
     line-height: 20px;
 }
 
+.table-logo {
+    width: 70px;
+    height: auto;
+}
