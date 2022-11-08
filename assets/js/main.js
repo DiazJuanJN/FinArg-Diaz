@@ -45,31 +45,40 @@ valorARS.addEventListener("keyup", () => {
 
 //PORTALES DE COMPRA
 
-const data = [
+/*const data = [
     ["Uala", "assets/img/uala-logo.png", "$200 (+65%)"],
     ["Brubank", "assets/img/brubank-logo.png", "$180 (+50%)"], 
     ["Banco Nacion", "assets/img/bna-logo.png", "$250 (+45%)"]
-];
+];*/
 
-function renderTableRows(rows) {
+const portales = [
+    {nombre: "Uala", logo: "uala-logo.png", cotizacion: "$200 (+65%)"},
+    {nombre: "Brubank", logo: "brubank-logo.png", cotizacion: "$180 (+50%)"},
+    {nombre: "Banco Nacion", logo: "bna-logo.png", cotizacion: "$250 (+45%)"},
+    {nombre: "Binance", logo: "binance-logo.png", cotizacion: "$265 (0%)*"},
+    {nombre: "Lemon Cash", logo: "lemon-logo.png", cotizacion: "$284 (0%)*"},
+    {nombre: "Invertir Online", logo: "invonline-logo.png", cotizacion: "$289 (0%)**"}
+]
+
+function renderTableRows() {
     let htmlTable = `<tr>
     <td>label here</td>
     <td>img here</td>
     <td>value here</td>
     </tr>`;
     let htmlTotal = ``;
-    rows.forEach(function(row) {
+    portales.forEach(portal=>{
         htmlTable = `<tr>
-        <td>${row[0]}</td>
-        <td><img class="table-logo" src=${row[1]}></td>
-        <td>${row[2]}</td>
+        <td>${portal.nombre}</td>
+        <td><img class="table-logo" src="assets/img/${portal.logo}"></td>
+        <td>${portal.cotizacion}</td>
         </tr>`
         htmlTotal = htmlTotal + htmlTable;
-    })
+    });
     return htmlTotal;
 }
 
-const html = renderTableRows(data);
+const html = renderTableRows(portales);
 
-const tbody = document.querySelector("#nutrition-table tbody");
+const tbody = document.querySelector("#portales-table tbody");
 tbody.insertAdjacentHTML("beforeend", html);

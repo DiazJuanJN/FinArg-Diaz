@@ -262,3 +262,7 @@ sup {
     width: 70px;
     height: auto;
 }
+
+#portales-table tbody tr td {
+    text-align: center;
+}
