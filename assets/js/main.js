@@ -52,9 +52,9 @@ valorARS.addEventListener("keyup", () => {
 ];*/
 
 const portales = [
-    {nombre: "Uala", logo: "uala-logo.png", cotizacion: "$200 (+65%)"},
+    {nombre: "Uala", logo: "uala-logo.png", cotizacion: "$140 (+65%)"},
     {nombre: "Brubank", logo: "brubank-logo.png", cotizacion: "$180 (+50%)"},
-    {nombre: "Banco Nacion", logo: "bna-logo.png", cotizacion: "$250 (+45%)"},
+    {nombre: "Banco Nacion", logo: "bna-logo.png", cotizacion: "$150 (+45%)"},
     {nombre: "Binance", logo: "binance-logo.png", cotizacion: "$265 (0%)*"},
     {nombre: "Lemon Cash", logo: "lemon-logo.png", cotizacion: "$284 (0%)*"},
     {nombre: "Invertir Online", logo: "invonline-logo.png", cotizacion: "$289 (0%)**"}
