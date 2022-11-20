@@ -58,6 +58,27 @@
             <p>2. 1U$D = $291,00ARS (21/10/22). </p>
         </section>
         <br>
+        <div>
+            <div>
+                <label for="sort-portales">Organizar por:</label>
+                <select name="sort-portales" id="sort">
+                    <option value="alf">Alfabeticamente</option>
+                    <option value="lower">Menor precio</option>
+                    <option value="higher">Mayor precio</option>
+                    <option value="lower-imp">Menores impuestos</option>
+                </select>
+            </div>
+            <div>
+                <label for="filter-portales">Filtrar:</label>
+                <select name="filter-portales" id="filter">
+                    <option value="showall">Mostrar todos</option>
+                    <option value="virtual">Bancas virtuales</option>
+                    <option value="bank">Entidades bancarias</option>
+                    <option value="crypto">Crypto exchanges</option>
+                    <option value="investment">Gestores de inversion</option>
+                </select>
+            </div>
+        </div>
         <table class="table" id="portales-table">
             <thead>
                 <tr>
