@@ -329,3 +329,11 @@ sup {
 .inv-info h4 {
     font-size: 24px;
 }
+
+#inv-register {
+    margin-top: 20px;
+}
+
+#inv-register tbody tr td {
+    text-align: center;
+}
