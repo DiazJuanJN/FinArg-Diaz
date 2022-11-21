@@ -1,4 +1,4 @@
-//CONVERSOR DE DIVISA
+//FOREX CONVERSOR
 
 function dolarOficial(valorARS) {
     return parseFloat(valorARS) / 153.83;
@@ -43,7 +43,7 @@ valorARS.addEventListener("keyup", () => {
     
 })
 
-//PORTALES DE COMPRA
+//FOREX PORTALS
 
 const portales = [
     {nombre: "Uala", tipo: "virtual", logo: "uala-logo.png", cotizacion: "140", imp:"65"},
@@ -76,7 +76,7 @@ function renderHTMLTable() {
 }
 renderHTMLTable();
 
-//SELECT FILTRO Y ORGANIZAR
+//SELECT FILTER AND SORT
 
 const sort = document.querySelector("#sort");
 const filter = document.querySelector("#filter");
@@ -130,3 +130,38 @@ filter.addEventListener('change', ()=>{
     tbody.innerHTML = ``;
     tbody.insertAdjacentHTML("beforeend", html);
 });
+
+//ADD INVESTMENT
+
+const invAmount = document.querySelector("#inv-amount");
+const invCoin = document.querySelector("#inv-coin");
+const coinCost = document.querySelector("#coin-cost");
+const invImp = document.querySelector("#inv-imp");
+
+const portfolio = document.querySelector("#portfolio");
+const invested = document.querySelector("#invested");
+const arsWorth = document.querySelector("#ars-worth");
+const profit = document.querySelector("#profit");
+
+const addInv = document.querySelector("#add-inv");
+
+addInv.addEventListener('click', ()=> {
+    let investedAmount = invAmount.value;
+    function convertInvestment() {
+        return investedAmount / (coinCost.value * (1 + invImp.value / 100))
+    }
+
+    portfolio.textContent = "USD " + convertInvestment(investedAmount).toFixed(2);
+    invested.textContent = "$" + investedAmount;
+
+    fetch('https://www.dolarsi.com/api/api.php?type=valoresprincipales')
+    .then(response => response.json())
+    .then(data => {
+        let APIdolar = data[1].casa.venta;
+        let realWorth = convertInvestment(investedAmount) * parseFloat(APIdolar);
+        arsWorth.textContent = "$" + realWorth.toFixed(2);
+
+        let earnings = (realWorth - investedAmount) * 100 / investedAmount;
+        profit.textContent = "%" + earnings.toFixed(2);
+    });
+})

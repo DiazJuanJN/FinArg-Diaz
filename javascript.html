@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5874c0061f.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -89,6 +90,38 @@
             </thead>
             <tbody></tbody>
         </table>
+        <h1>Lleva registro de tus finanzas!</h1>
+        <section class="inv-record-section">
+            <div class="add-inv-form">
+                <div class="add-inv-title">
+                    <i class="fa-solid fa-circle-plus plus-btn"></i>
+                    <p>Añadir inversion</p>
+                </div>
+                <label for="inv-amount">Monto invertido:</label>
+                <input type="text" class="input" placeholder="$0.00" id="inv-amount">
+                <label for="inv-coin">Divisa:</label>
+                <select name="divisas" class="portal-select" id="inv-coin">
+                    <option value="usd">USD</option>
+                    <option value="eur">EUR</option>
+                    <option value="brl">BRL</option>
+                </select>
+                <label for="coin-cost">Costo individual*:</label>
+                <input type="text" class="input" placeholder="$0.00" id="coin-cost">
+                <label for="inv-imp">Impuestos:</label>
+                <input type="text" class="input" placeholder="0%" id="inv-imp">
+            </div>
+            <div class="inv-info">
+                <h3>Capital:</h3>
+                <h4 id="portfolio">$0</h4>
+                <h3>Inversion (ARS):</h3>
+                <h4 id="invested">$0</h4>
+                <h3>Valor (ARS):</h3>
+                <h4 id="ars-worth">$0</h4>
+                <h3>Profit:</h3>
+                <h4 id="profit">0%</h4>
+            </div>
+        </section>
+        <input type="button" value="Añadir" id="add-inv" class="btn btn-default">
     </main>
     <script src="assets/js/main.js"></script>
 </body>
