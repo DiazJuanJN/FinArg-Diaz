@@ -145,7 +145,14 @@ const profit = document.querySelector("#profit");
 
 const addInv = document.querySelector("#add-inv");
 
+const invRegister = document.querySelector("#inv-register");
+
+const invRecords = [];
+
 addInv.addEventListener('click', ()=> {
+    const DateTime = luxon.DateTime;
+    let now = DateTime.now().setLocale('es');
+
     let investedAmount = invAmount.value;
     function convertInvestment() {
         return investedAmount / (coinCost.value * (1 + invImp.value / 100))
@@ -164,4 +171,67 @@ addInv.addEventListener('click', ()=> {
         let earnings = (realWorth - investedAmount) * 100 / investedAmount;
         profit.textContent = "%" + earnings.toFixed(2);
     });
-})
+
+    const invRecord = {
+        date: now.toLocaleString(),
+        time: now.toLocaleString(DateTime.TIME_SIMPLE),
+        ARSinv: investedAmount,
+        USDcap: convertInvestment(investedAmount).toFixed(2),
+    }
+
+    invRecords.push(invRecord);
+    let invData = JSON.stringify(invRecords);
+    localStorage.setItem('inv', invData);
+    console.log(invRecords);
+
+    const recoveredInv = JSON.parse(localStorage.getItem('inv'));
+
+    function renderTableRows2() {
+        let htmlTable = ``;
+        let htmlTotal = ``;
+        recoveredInv.forEach(investment=>{
+            htmlTable = `<tr>
+            <td>${investment.date}</td>
+            <td>${investment.time}</td>
+            <td>$${investment.ARSinv}</td>
+            <td>$${investment.USDcap}</td>
+            </tr>`
+            htmlTotal = htmlTotal + htmlTable;
+        });
+        return htmlTotal;
+    }
+
+    const html2 = renderTableRows2(recoveredInv);
+    const tbody2 = document.querySelector("#inv-register tbody");
+    tbody2.innerHTML = ``;
+    tbody2.insertAdjacentHTML("beforeend", html2);
+});
+
+const recoveredInv = JSON.parse(localStorage.getItem('inv'));
+if (recoveredInv) {
+    recoveredInv.forEach(record => {
+        invRecords.push(record);
+    })
+};
+
+function renderTableRows2() {
+    let htmlTable = ``;
+    let htmlTotal = ``;
+    recoveredInv.forEach(investment=>{
+        htmlTable = `<tr>
+        <td>${investment.date}</td>
+        <td>${investment.time}</td>
+        <td>$${investment.ARSinv}</td>
+        <td>$${investment.USDcap}</td>
+        </tr>`
+        htmlTotal = htmlTotal + htmlTable;
+    });
+    return htmlTotal;
+}
+
+    const html2 = renderTableRows2(recoveredInv);
+    const tbody2 = document.querySelector("#inv-register tbody");
+    if (recoveredInv) {
+        tbody2.innerHTML = ``;
+    }
+    tbody2.insertAdjacentHTML("beforeend", html2);
