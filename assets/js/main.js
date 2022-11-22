@@ -154,8 +154,10 @@ addInv.addEventListener('click', ()=> {
     let now = DateTime.now().setLocale('es');
 
     let investedAmount = invAmount.value;
+    let totalBuyPrice = coinCost.value * (1 + invImp.value / 100);
+    console.log(totalBuyPrice);
     function convertInvestment() {
-        return investedAmount / (coinCost.value * (1 + invImp.value / 100))
+        return investedAmount / totalBuyPrice;
     }
 
     portfolio.textContent = "USD " + convertInvestment(investedAmount).toFixed(2);
@@ -177,6 +179,7 @@ addInv.addEventListener('click', ()=> {
         time: now.toLocaleString(DateTime.TIME_SIMPLE),
         ARSinv: investedAmount,
         USDcap: convertInvestment(investedAmount).toFixed(2),
+        buyPrice: totalBuyPrice,
     }
 
     invRecords.push(invRecord);
@@ -195,6 +198,7 @@ addInv.addEventListener('click', ()=> {
             <td>${investment.time}</td>
             <td>$${investment.ARSinv}</td>
             <td>$${investment.USDcap}</td>
+            <td>$${investment.buyPrice}</td>
             </tr>`
             htmlTotal = htmlTotal + htmlTable;
         });
@@ -205,6 +209,38 @@ addInv.addEventListener('click', ()=> {
     const tbody2 = document.querySelector("#inv-register tbody");
     tbody2.innerHTML = ``;
     tbody2.insertAdjacentHTML("beforeend", html2);
+
+    //TOTAL EXPOSITION
+
+    const totalCap = document.querySelector("#total-cap");
+    const totalWorth = document.querySelector("#total-worth");
+    const totalProfit = document.querySelector("#total-profit");
+
+    if (recoveredInv) {
+        let capFactor = 0;
+        let capSummatory = 0;
+        recoveredInv.forEach(cap =>{
+            capFactor = parseFloat(cap.USDcap);
+            capSummatory = capSummatory + capFactor;
+        })
+        let invFactor = 0;
+        let invSummatory = 0;
+        recoveredInv.forEach(inv =>{
+            invFactor = parseFloat(inv.ARSinv);
+            invSummatory = invSummatory + invFactor;
+        })
+        totalCap.textContent = "$" + capSummatory;
+        fetch('https://www.dolarsi.com/api/api.php?type=valoresprincipales')
+        .then(response => response.json())
+        .then(data => {
+        let APIdolar = data[1].casa.venta;
+        let APIworth = capSummatory * parseFloat(APIdolar);
+        totalWorth.textContent = "$" + APIworth.toFixed(2);
+
+        let totalEarnings = (APIworth - invSummatory) * 100 / invSummatory;
+        totalProfit.textContent = "%" + totalEarnings.toFixed(2);
+    });
+    }
 });
 
 const recoveredInv = JSON.parse(localStorage.getItem('inv'));
@@ -223,6 +259,7 @@ function renderTableRows2() {
         <td>${investment.time}</td>
         <td>$${investment.ARSinv}</td>
         <td>$${investment.USDcap}</td>
+        <td>$${investment.buyPrice}</td>
         </tr>`
         htmlTotal = htmlTotal + htmlTable;
     });

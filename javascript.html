@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/5874c0061f.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -130,6 +131,7 @@
                     <th>Hora</th>
                     <th>Inversion (ARS)</th>
                     <th>Capital (USD)</th>
+                    <th>Valor de compra</th>
                 </tr>
             </thead>
             <tbody>
@@ -138,9 +140,18 @@
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
+                    <td>-</td>
                 </tr>
             </tbody>
         </table>
+        <div class="total-record">
+            <p>Capital Total:</p>
+            <p class="total-output" id="total-cap"></p>
+            <p>Valor Total:</p>
+            <p class="total-output" id="total-worth"></p>
+            <p>Total Profit:</p>
+            <p class="total-output" id="total-profit"></p>
+        </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.1.0/build/global/luxon.min.js"></script>
     <script src="assets/js/main.js"></script>

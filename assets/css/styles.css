@@ -337,3 +337,21 @@ sup {
 #inv-register tbody tr td {
     text-align: center;
 }
+
+/* TOTAL SECTION */
+
+.total-record {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 10px;
+    background-color: var(--white);
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px var(--primary-2);
+}
+
+.total-output {
+    font-size: 24px;
+    color: var(--primary-2);
+}
