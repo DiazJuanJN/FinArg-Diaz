@@ -174,6 +174,8 @@ addInv.addEventListener('click', ()=> {
         profit.textContent = "%" + earnings.toFixed(2);
     });
 
+    //PUSH INTO STORAGE NEW INVESTMENT
+
     const invRecord = {
         date: now.toLocaleString(),
         time: now.toLocaleString(DateTime.TIME_SIMPLE),
@@ -186,6 +188,8 @@ addInv.addEventListener('click', ()=> {
     let invData = JSON.stringify(invRecords);
     localStorage.setItem('inv', invData);
     console.log(invRecords);
+
+    //INVESTMENT RECORD
 
     const recoveredInv = JSON.parse(localStorage.getItem('inv'));
 
@@ -243,6 +247,8 @@ addInv.addEventListener('click', ()=> {
     }
 });
 
+//INVESTMENT RECORD (OUTSIDE EVENT)
+
 const recoveredInv = JSON.parse(localStorage.getItem('inv'));
 if (recoveredInv) {
     recoveredInv.forEach(record => {
@@ -272,3 +278,35 @@ function renderTableRows2() {
         tbody2.innerHTML = ``;
     }
     tbody2.insertAdjacentHTML("beforeend", html2);
+
+    //TOTAL EXPOSITION (OUTSIDE EVENT)
+
+    const totalCap = document.querySelector("#total-cap");
+    const totalWorth = document.querySelector("#total-worth");
+    const totalProfit = document.querySelector("#total-profit");
+
+    if (recoveredInv) {
+        let capFactor = 0;
+        let capSummatory = 0;
+        recoveredInv.forEach(cap =>{
+            capFactor = parseFloat(cap.USDcap);
+            capSummatory = capSummatory + capFactor;
+        })
+        let invFactor = 0;
+        let invSummatory = 0;
+        recoveredInv.forEach(inv =>{
+            invFactor = parseFloat(inv.ARSinv);
+            invSummatory = invSummatory + invFactor;
+        })
+        totalCap.textContent = "$" + capSummatory;
+        fetch('https://www.dolarsi.com/api/api.php?type=valoresprincipales')
+        .then(response => response.json())
+        .then(data => {
+        let APIdolar = data[1].casa.venta;
+        let APIworth = capSummatory * parseFloat(APIdolar);
+        totalWorth.textContent = "$" + APIworth.toFixed(2);
+
+        let totalEarnings = (APIworth - invSummatory) * 100 / invSummatory;
+        totalProfit.textContent = "%" + totalEarnings.toFixed(2);
+    });
+    }
