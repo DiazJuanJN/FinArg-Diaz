@@ -1,19 +1,19 @@
 //FOREX CONVERSOR
 
 function dolarOficial(valorARS) {
-    return parseFloat(valorARS) / 153.83;
+    return parseFloat(valorARS) / 174.82;
 }
 function dolarTarjeta(valorARS) {
-    return parseFloat(valorARS) / (153.83 * 1.30 * 1.45);
+    return parseFloat(valorARS) / (174.82 * 1.30 * 1.45);
 }
 function dolarTarjetaPlus300(valorARS) {
-    return parseFloat(valorARS) / (153.83 * 1.35 * 1.45 * 1.25);
+    return parseFloat(valorARS) / (174.82 * 1.35 * 1.45 * 1.25);
 }
 function dolarAhorro(valorARS) {
-    return parseFloat(valorARS) / (153.83 * 1.30 * 1.35);
+    return parseFloat(valorARS) / (174.82 * 1.30 * 1.35);
 }
 function dolarBlue(valorARS) {
-    return parseFloat(valorARS) / 291;
+    return parseFloat(valorARS) / 313;
 }
 
 const answer1 = document.querySelector("#answer1");
@@ -49,9 +49,11 @@ const portales = [
     {nombre: "Uala", tipo: "virtual", logo: "uala-logo.png", cotizacion: "140", imp:"65"},
     {nombre: "Brubank", tipo: "virtual", logo: "brubank-logo.png", cotizacion: "180", imp: "50"},
     {nombre: "Banco Nacion", tipo: "bank", logo: "bna-logo.png", cotizacion: "150", imp: "45"},
+    {nombre: "Banco Patagonia", tipo: "bank", logo: "patagonia-logo.png", cotizacion: "175", imp: "45"},
     {nombre: "Binance", tipo: "crypto", logo: "binance-logo.png", cotizacion: "265", imp: "0"},
     {nombre: "Lemon Cash", tipo: "crypto", logo: "lemon-logo.png", cotizacion: "284", imp: "0"},
-    {nombre: "Invertir Online", tipo: "investment", logo: "invonline-logo.png", cotizacion: "289", imp:"0"}
+    {nombre: "Invertir Online", tipo: "investment", logo: "invonline-logo.png", cotizacion: "289", imp:"0"},
+    {nombre: "eToro", tipo: "investment", logo: "etoro-logo.png", cotizacion: "305", imp:"0"}
 ];
 
 function renderTableRows() {
