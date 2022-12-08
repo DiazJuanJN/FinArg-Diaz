@@ -1,3 +1,16 @@
+//ENTER WEBSITE
+
+const enterWebBtn = document.querySelector("#enter-ws-btn")
+const enterWebSect = document.querySelector("#enter-web-sect")
+
+enterWebBtn.addEventListener('click', () => {
+    enterWebSect.classList.replace('enter-website', 'remove-enter-sect');
+    localStorage.setItem('startedDemo', true);
+})
+
+if (JSON.parse(localStorage.getItem('startedDemo')) === true) {
+    enterWebSect.classList.replace('enter-website', 'remove-enter-sect');
+}
 //FOREX CONVERSOR
 
 function dolarOficial(valorARS) {
@@ -53,7 +66,7 @@ const portales = [
     {nombre: "Binance", tipo: "crypto", logo: "binance-logo.png", cotizacion: "265", imp: "0"},
     {nombre: "Lemon Cash", tipo: "crypto", logo: "lemon-logo.png", cotizacion: "284", imp: "0"},
     {nombre: "Invertir Online", tipo: "investment", logo: "invonline-logo.png", cotizacion: "289", imp:"0"},
-    {nombre: "eToro", tipo: "investment", logo: "etoro-logo.png", cotizacion: "305", imp:"0"}
+    {nombre: "EToro", tipo: "investment", logo: "etoro-logo.png", cotizacion: "305", imp:"0"}
 ];
 
 function renderTableRows() {
