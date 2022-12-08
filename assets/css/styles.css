@@ -65,6 +65,12 @@ a:hover {
     padding: 0 20px;
 }
 
+.end-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
 /* ENTER WEBSITE */
 
 .enter-website {
