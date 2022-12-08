@@ -86,7 +86,7 @@ a:hover {
     align-items: center;
 }
 
-.remove-enter-sect {
+.remove-sect {
     display: none;
 }
 
@@ -223,6 +223,13 @@ input:not(.btn):focus {
     flex-direction: row;
     align-items: center;
     margin-bottom: 20px;
+    justify-content: space-between;
+}
+
+.nav-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .nav-brand {
@@ -234,12 +241,16 @@ input:not(.btn):focus {
     color: var(--primary-1);
 }
 
+.nav-info {
+    color: var(--primary-1);
+}
+
 .logo {
     width: 50px;
     height: auto;
 }
 
-/*TABLAS*/
+/*TABLES*/
 
 .table {
     width: 100%;
@@ -309,7 +320,7 @@ sup {
     padding: 10px 0px 10px 20px;
 }
 
-.portal-select {
+.portal-select, .coin-select {
     font-family: 'Rubik';
     padding: 10px;
     border: 1px solid var(--neutral-4);
@@ -318,8 +329,17 @@ sup {
     border-radius: 3px;
 }
 
-.portal-select:focus {
+.portal-select:focus, .coin-select:focus {
     box-shadow: 0px 0px 5px var(--primary-1);
+}
+
+.coin-select-error {
+    font-family: 'Rubik';
+    padding: 10px;
+    border: 2px solid var(--accent-2);
+    box-shadow: 0px 0px 5px var(--neutral-4);
+    transition: border 160ms;
+    border-radius: 3px;
 }
 
 /* ADD INVESTMENT SECTION */
@@ -365,6 +385,14 @@ sup {
 
 #inv-register tbody tr td {
     text-align: center;
+}
+
+/* JUST USD MSG */
+
+.usd-msg {
+    display: block;
+    color: var(--accent-1);
+    font-size: small;
 }
 
 /* TOTAL SECTION */

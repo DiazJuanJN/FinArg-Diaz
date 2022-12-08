@@ -4,12 +4,12 @@ const enterWebBtn = document.querySelector("#enter-ws-btn")
 const enterWebSect = document.querySelector("#enter-web-sect")
 
 enterWebBtn.addEventListener('click', () => {
-    enterWebSect.classList.replace('enter-website', 'remove-enter-sect');
+    enterWebSect.classList.replace('enter-website', 'remove-sect');
     localStorage.setItem('startedDemo', true);
 })
 
 if (JSON.parse(localStorage.getItem('startedDemo')) === true) {
-    enterWebSect.classList.replace('enter-website', 'remove-enter-sect');
+    enterWebSect.classList.replace('enter-website', 'remove-sect');
 }
 //FOREX CONVERSOR
 
@@ -261,6 +261,22 @@ addInv.addEventListener('click', ()=> {
     });
     }
 });
+
+//JUST OPERATE WITH USD
+
+const usdMsg = document.querySelector("#usd-msg")
+
+invCoin.addEventListener('change', () => {
+    const coinValue = invCoin.options[invCoin.selectedIndex].value;
+    if (coinValue == "eur"||"brl") {
+        usdMsg.classList.replace('remove-sect', 'usd-msg');
+        invCoin.classList.replace('coin-select', 'coin-select-error');
+    } 
+    if (coinValue == "usd") {
+        usdMsg.classList.replace('usd-msg', 'remove-sect');
+        invCoin.classList.replace('coin-select-error', 'coin-select');
+    }
+})
 
 //INVESTMENT RECORD (OUTSIDE EVENT)
 

@@ -25,8 +25,11 @@
     </section>
 
     <nav class="navbar">
-        <img src="assets/img/favicon1.png" alt="Logo de FinArg" class="logo">
-        <h1 class="nav-brand">FinArg: Pensa en tus finanzas</h1>
+        <div class="nav-title">
+            <img src="assets/img/favicon1.png" alt="Logo de FinArg" class="logo">
+            <h1 class="nav-brand">FinArg: Pensa en tus finanzas</h1>
+        </div>
+        <h3 class="nav-info">Disponible hasta Dic 31 2022</h3>
     </nav>
     
     <main class="container">
@@ -111,11 +114,13 @@
                 <label for="inv-amount">Monto invertido:</label>
                 <input type="text" class="input" placeholder="$0.00" id="inv-amount">
                 <label for="inv-coin">Divisa:</label>
-                <select name="divisas" class="portal-select" id="inv-coin">
+                <select name="divisas" class="coin-select" id="inv-coin">
                     <option value="usd">USD</option>
                     <option value="eur">EUR</option>
                     <option value="brl">BRL</option>
                 </select>
+                <p class="remove-sect" id="usd-msg">Con la version Demo de FinArg, puede operar unicamente con USD</p>
+                <br>
                 <label for="coin-cost">Costo individual*:</label>
                 <input type="text" class="input" placeholder="$0.00" id="coin-cost">
                 <label for="inv-imp">Impuestos:</label>
